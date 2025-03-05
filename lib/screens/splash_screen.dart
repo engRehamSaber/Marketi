@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:market/screens/onboarding_screen.dart';
 
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -26,17 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('images/Logo_Splash_Screen.png', height: 100),
-            const SizedBox(height: 20),
-            const Text(
-              "Marketi",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue),
-            ),
-          ],
-        ),
+        child: Image.asset('images/Logo_Splash_Screen.png', height: 300),
       ),
     );
   }

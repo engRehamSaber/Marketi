@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'login_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
 
   @override
-  
   _OnboardingScreenState createState() => _OnboardingScreenState();
 }
 
@@ -16,23 +16,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     {
       "image": "images/Illustration_Onboarding_1.png",
       "title": "Welcome to Marketi",
-      "description": "Discover a world of endless possibilities and shop from the comfort of your fingertips Browse through a wide range of products, from fashion and electronics to home.",
+      "description":
+          "Discover a world of endless possibilities and shop from the comfort of your fingertips Browse through a wide range of products, from fashion and electronics to home.",
     },
     {
       "image": "images/Illustration_Onboarding_2.png",
       "title": "Easy to Buy",
-      "description": "Find the perfect item that suits your style and needs With secure payment options and fast delivery, shopping has never been easier..",
+      "description":
+          "Find the perfect item that suits your style and needs With secure payment options and fast delivery, shopping has never been easier..",
     },
     {
       "image": "images/Illustration_Onboarding_3.png",
       "title": "Wonderful User Experience",
-      "description": "Start exploring now and experience the convenience of online shopping at its best.",
+      "description":
+          "Start exploring now and experience the convenience of online shopping at its best.",
     }
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white, 
       body: Column(
         children: [
           Expanded(
@@ -50,9 +54,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   children: [
                     Image.asset(onboardingData[index]["image"]!, height: 250),
                     const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        onboardingData.length,
+                        (index) => buildDot(index),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
                     Text(
                       onboardingData[index]["title"]!,
-                      style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
                     Padding(
@@ -68,20 +81,16 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              onboardingData.length,
-              (index) => buildDot(index),
-            ),
-          ),
           const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: ElevatedButton(
               onPressed: () {
                 if (_currentIndex == onboardingData.length - 1) {
-                  // Navigate to Home or Login
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  );
                 } else {
                   _controller.nextPage(
                     duration: const Duration(milliseconds: 300),
@@ -89,8 +98,24 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   );
                 }
               },
-              style: ElevatedButton.styleFrom(minimumSize: const Size(double.infinity, 50)),
-              child: Text(_currentIndex == onboardingData.length - 1 ? "Get Started" : "Next"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue.shade600,
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                minimumSize: const Size(347, 48),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+              ),
+              child: Text(
+                _currentIndex == onboardingData.length - 1
+                    ? "Get Started"
+                    : "Next",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
         ],
@@ -100,12 +125,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   Widget buildDot(int index) {
     return Container(
-      margin: const EdgeInsets.only(right: 5),
-      height: 10,
-      width: _currentIndex == index ? 20 : 10,
+      margin: const EdgeInsets.symmetric(horizontal: 5), 
+      height: _currentIndex == index ? 17 : 13, 
+      width: _currentIndex == index ? 17 : 13,
       decoration: BoxDecoration(
-        color: _currentIndex == index ? Colors.blue : Colors.grey,
-        borderRadius: BorderRadius.circular(5),
+        shape: BoxShape.circle,
+        color: _currentIndex == index ? Colors.black : Colors.blue.shade100, 
       ),
     );
   }
