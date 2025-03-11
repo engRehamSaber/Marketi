@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:market/screens/ForgetPasswordPhonScreen.dart';
 import 'signup_screen.dart';
 import '../widgets/custom_text_field.dart';
 
@@ -67,12 +68,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.blue),
-                      ),
-                    ),
+  onPressed: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ForgotPasswordWithPhone()),
+    );
+  },
+  child: const Text(
+    'Forgot Password?',
+    style: TextStyle(color: Colors.blue),
+  ),
+),
+
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -122,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SignUpScreen()),
+                          MaterialPageRoute(builder: (context) => const SignUpScreen()),
                         );
                       },
                       child: const Text(

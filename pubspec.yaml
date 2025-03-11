@@ -37,6 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.17
+  pin_code_fields: ^8.0.1
   
 
 dev_dependencies:
@@ -70,6 +71,12 @@ flutter:
     - images/Phone_Icon.svg
     - images/Name_Icon.svg
     - images/User_Icon.svg
+    - images/Illustration_Congratulations.png
+    - images/Illustration_Create_New_Password.png
+    - images/Illustration_Forgot_Password_With_Email.png
+    - images/Illustration_Forgot_Password_With_Phone.png
+    - images/Illustration_Verification_Code_With_Email.png
+    - images/Illustration_Verification_Code_With_Phone.png
     # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
